@@ -14,12 +14,20 @@
 # print(pokemons)
 
 
-tipo = input('Tipo 1 - ADM 2 - CLIENTE: ')
+data = input('Data: (dd/mm/aaaa) ')
+while len(data) != 10 or "/" not in data:
+    print('Data inválida')
+    data = input('Data: (dd/mm/aaaa) ')
 
-if tipo.isdigit():
-    tipo = int(tipo)
-    if tipo != 1 or tipo != 2:
-        print('TIpo inválido')
-else:
-    print('Tipo inválido')
+dataFormatada = data.split('/')
+dia = dataFormatada[0]
+mes = dataFormatada[1]
+ano = dataFormatada[2]
 
+print(dia)
+print(mes)
+print(ano)
+
+# nomes = 'gabriel,bruno,alice,ana'
+# lista = nomes.split(',')
+# print(lista[0])

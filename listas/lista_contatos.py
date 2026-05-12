@@ -28,7 +28,8 @@ while True:
         nome = input('Digite o nome do contato: ')
         celular = input('Digite o celular: ')
         email = input('Digite o email: ')
-        contatos.append([nome, celular, email])
+        c = [nome, celular, email]
+        contatos.append(c)
     elif opcao == 2:
         print('-' * 50)
         nome = input('Digite o nome do contato: ')
@@ -50,7 +51,7 @@ while True:
                 nome = input('Digite o novo nome: ')
                 celular = input('Digite o novo celular: ')
                 email = input('Digite o novo email: ')
-                contatos[posicao] = [nome, celular, email]
+                contatos[posicao] = [contatos[posicao][0], celular, contatos[posicao][2]]
                 print('\n\nContato alterado com sucesso!\n\n')
     elif opcao == 5:
         print('Para apagar informe o dado abaixo')
