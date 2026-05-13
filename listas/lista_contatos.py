@@ -12,7 +12,52 @@ contatos = [
     ['Pedro', '54445466454', 'd@email.com']
 ]
 
-while True:
+# funções da lista de contatos
+def cadastrarContato():
+    nome = input('Digite o nome do contato: ')
+    celular = input('Digite o celular: ')
+    email = input('Digite o email: ')
+    c = [nome, celular, email]
+    contatos.append(c)
+
+def buscarContatoPorNome(nome):
+    print('-' * 50)
+    for c in contatos:
+        if c[0] == nome:
+            print(c[0], ' | ', c[1], ' | ', c[2]) 
+    print('-' * 50)
+
+def buscarContatoPorCelular(celular):
+    print('-' * 50)
+    for c in contatos:
+        if c[1] == celular:
+            print(c[0], ' | ', c[1], ' | ', c[2]) 
+    print('-' * 50)
+
+def listarContatos():
+    print('-' * 50)
+    for c in contatos:
+        print(c[0], ' | ', c[1], ' | ', c[2])
+
+    print('-' * 50)
+
+def alterarContato(celular):
+    print('Para alterar informe o dado abaixo')
+    for posicao in range(len(contatos)):
+        if contatos[posicao][1] == celular:
+            nome = input('Digite o novo nome: ')
+            celular = input('Digite o novo celular: ')
+            email = input('Digite o novo email: ')
+            contatos[posicao] = [nome, celular, email]
+            print('\n\nContato alterado com sucesso!\n\n')
+
+def apagarContato(celular):
+    for posicao in range(len(contatos)):
+        if contatos[posicao][1] == celular:
+            contatos.pop(posicao)
+            print('contato removido com sucesso!')
+            break
+def iniciarMenu():
     print('Bem vindo a ContactPython App')
     print('1 - Criar contato')
     print('2 - Buscar contato por nome')
@@ -21,51 +66,26 @@ while True:
     print('5 - Apagar contato')
     print('6 - Buscar contato por celular')
     print('0 - Sair')
+
+while True:
+    iniciarMenu()
     opcao = int(input('Digite a opção: '))
     if opcao == 0:
         break
     elif opcao == 1:
-        nome = input('Digite o nome do contato: ')
-        celular = input('Digite o celular: ')
-        email = input('Digite o email: ')
-        c = [nome, celular, email]
-        contatos.append(c)
+        cadastrarContato()
     elif opcao == 2:
-        print('-' * 50)
         nome = input('Digite o nome do contato: ')
-        for c in contatos:
-            if c[0] == nome:
-                print(c[0], ' | ', c[1], ' | ', c[2]) 
-        print('-' * 50)
+        buscarContatoPorNome(nome)
     elif opcao == 3:
-        print('-' * 50)
-        for c in contatos:
-            print(c[0], ' - ', c[1], ' - ', c[2])
-
-        print('-' * 50)
+        listarContatos()
     elif opcao == 4:
-        print('Para alterar informe o dado abaixo')
         celular = input('Digite o celular do contato: ')
-        for posicao in range(len(contatos)):
-            if contatos[posicao][1] == celular:
-                nome = input('Digite o novo nome: ')
-                celular = input('Digite o novo celular: ')
-                email = input('Digite o novo email: ')
-                contatos[posicao] = [contatos[posicao][0], celular, contatos[posicao][2]]
-                print('\n\nContato alterado com sucesso!\n\n')
+        alterarContato(celular)
     elif opcao == 5:
         print('Para apagar informe o dado abaixo')
         celular = input('Digite o celular do contato que deseja apagar: ')
-        
-        for posicao in range(len(contatos)):
-            if contatos[posicao][1] == celular:
-                contatos.pop
-                print('contato removido com sucesso!')
-                break
+        apagarContato(celular)
     elif opcao == 6:
-        print('-' * 50)
         celular = input('Digite o celular do contato: ')
-        for c in contatos:
-            if c[1] == celular:
-                print(c[0], ' | ', c[1], ' | ', c[2]) 
-        print('-' * 50)
+        buscarContatoPorCelular(celular)
