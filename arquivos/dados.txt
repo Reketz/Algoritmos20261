@@ -1,0 +1,4 @@
+Guilherne|0
+joa|12
+Pedro|55
+Alvin|3
